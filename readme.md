@@ -1,5 +1,5 @@
 # Human Friendly Wheel!
-This is a wheel that is highly customizable just by using the Interface.<br>
+This is a wheel that is highly customizable just by using a Interface.<br>
 Also many thanks to winWheel.js this 100% wouldn't be possibly without it. Check it out [here](http://dougtesting.net/home)!
 
 **Note:** I'm 90% sure the weight img & the trashcan is copyrighted, it was just something I found on my computer. I highly advise using different images if you plan on using this for commercial purposes.
