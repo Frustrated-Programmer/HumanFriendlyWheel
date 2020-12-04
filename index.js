@@ -1,31 +1,33 @@
 //SAVE/LOADING
-function saveItem(item,data){
+function saveItem(item, data){
     switch(item){
-        case 'list':
-        case 'toSkip':
-        case 'weights':
-        case 'colors':
-        case 'skip':
-        case 'randomize':
-            return localStorage.setItem(item,data);
+        case "list":
+        case "toSkip":
+        case "weights":
+        case "colors":
+        case "skip":
+        case "randomize":
+            return localStorage.setItem(item, data);
     }
 }
+
 function loadItem(item){
     switch(item){
-        case 'list':
-        case 'toSkip':
-        case 'weights':
-        case 'colors':
-        case 'skip':
-        case 'randomize':
+        case "list":
+        case "toSkip":
+        case "weights":
+        case "colors":
+        case "skip":
+        case "randomize":
             return localStorage.getItem(item);
     }
 
 }
+
 //LIST
-let list = loadItem('list');
+let list = loadItem("list");
 if(!list){
-    list = ["Item 1","Item 2","Item 3","Item 4"];
+    list = ["Item 1", "Item 2", "Item 3", "Item 4"];
     saveItem("list", list.join(", "));
 }
 else{
@@ -56,8 +58,8 @@ else{
 let colors = loadItem("colors");
 if(!colors){
     colors = [];
-    for(let i =0;i<list.length;i++){
-        colors.push("#"+Math.floor(Math.random()*16777215).toString(16));
+    for(let i = 0; i < list.length; i++){
+        colors.push("#" + Math.floor(Math.random() * 16777215).toString(16));
     }
     saveItem("colors", colors.join(", "));
 }
@@ -101,12 +103,12 @@ let addItemCancel = document.getElementById("add-item-cancel");
 let addItemAdd = document.getElementById("add-item-add");
 //export-item
 let exportJson = "{}";
-let exportFile = document.getElementById('export-file');
-let exportBttn = document.getElementById('exportBttn');
-let exportFileClose = document.getElementById('export-file-close');
-let exportFileDownload = document.getElementById('export-file-download');
-let exportFileData = document.getElementById('export-file-data');
-let exportFileAnchor = document.getElementById('export-file-anchor');
+let exportFile = document.getElementById("export-file");
+let exportBttn = document.getElementById("exportBttn");
+let exportFileClose = document.getElementById("export-file-close");
+let exportFileDownload = document.getElementById("export-file-download");
+let exportFileData = document.getElementById("export-file-data");
+let exportFileAnchor = document.getElementById("export-file-anchor");
 //
 let audio = new Audio("tick.mp3");
 let awaiting = "";
@@ -122,17 +124,17 @@ let colorPicker = document.getElementById("color-picker");
 let uploadSteps = {};
 exportFileClose.onclick = function(){
     exportFile.style.display = "none";
-}
+};
 exportBttn.onclick = function(){
     exportJson = JSON.stringify(exportJson, null, "\t");
     exportFileData.value = exportJson;
     exportFile.style.display = "block";
-}
+};
 exportFileDownload.onclick = function(){
-    exportFileAnchor.setAttribute("href","data:text/json;charset=utf-8," + encodeURIComponent(exportJson));
+    exportFileAnchor.setAttribute("href", "data:text/json;charset=utf-8," + encodeURIComponent(exportJson));
     exportFileAnchor.setAttribute("download", "wheelSettings.json");
     exportFileAnchor.click();
-}
+};
 editItemEditor.onscroll = function(e){
     lines.scrollTop = editItemEditor.scrollTop;
     editItemColors.scrollTop = editItemEditor.scrollTop;
@@ -426,7 +428,7 @@ function addColorBttn(){
         addItemValue.value = this.value;
     };
     colorPicker.style.left = "33.9%";
-    colorPicker.style.top="46%";
+    colorPicker.style.top = "46%";
     addItemAdd.onclick = function(){
         let errorMsg = "";
         if(addItemValue.value.length){
@@ -478,9 +480,9 @@ function updateLines(){
             div.style.color = "#000000";
         }
         div.onclick = function(e){
-            editItemColors.classList.remove('highlight');
-            colorPicker.style.left = ((e.pageX / window.innerWidth) * 100)+"%";
-            colorPicker.style.top=((e.pageY / window.innerHeight) * 100)+"%"
+            editItemColors.classList.remove("highlight");
+            colorPicker.style.left = ((e.pageX / window.innerWidth) * 100) + "%";
+            colorPicker.style.top = ((e.pageY / window.innerHeight) * 100) + "%";
             colorPicker.value = split[i];
             colorPicker.oninput = function(){
                 div.style.backgroundColor = this.value;
@@ -488,8 +490,8 @@ function updateLines(){
                 split[i] = this.value;
                 editItemEditor.value = split.join("\n");
             };
-            setTimeout(function (){colorPicker.click()},100);//Sometimes a delay is needed to the color picker left/top is updated
-        }
+            setTimeout(function(){colorPicker.click();}, 100);//Sometimes a delay is needed to the color picker left/top is updated
+        };
         editItemColors.appendChild(div);
         linesTxt += (i + 1) + "\n";
     }
@@ -917,7 +919,7 @@ function makeWheel(rotation){
         "responsive": true,
         "margin": margin,
         "outerRadius": wheelWidth,
-        "canvasId":canvas.id,
+        "canvasId": canvas.id,
         "textOrientation": "vertical",
         "textAlignment": "outer",
         "numSegments": weighted + autos,
@@ -938,7 +940,7 @@ function makeWheel(rotation){
             "outerRadius": 4,
             "responsive": true
         }
-    }
+    };
     theWheel = new Winwheel(exportJson);
     update();
 }
