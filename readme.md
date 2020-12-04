@@ -2,6 +2,8 @@
 This is a wheel that is highly customizable just by using a Interface.<br>
 Also many thanks to winWheel.js this 100% wouldn't be possibly without it. Check it out [here](http://dougtesting.net/home)!
 
+### [support this project](#ideas)
+
 ## Features
  - Lottery Wheel that selects an item by random.
  - Lottery Wheel's contents customizable.
