@@ -9,5 +9,7 @@ the add list button GUI has a small issue, the weight input is higher by 1-2 px
 add a button that hides the sidebar. (SHIFT+S maybe re-shows it)
 add a checkbox to disable/enable pointer
 maybe add settings that allow user to change text/background/border color of the objects
-maybe add customization to the pointer
+let the user choose location of the pointer.
+maybe add customization to the pointer such as img/color/size
+make the webpage be size responsive.
 have the export button export a html/js file using exactly the barebones needed to recreate the wheel. (JSON export is missing things like sounds & pointer)

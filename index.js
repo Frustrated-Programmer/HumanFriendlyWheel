@@ -925,7 +925,7 @@ function makeWheel(rotation){
         "numSegments": weighted + autos,
         "segments": segments,
         "pointerGuide": true,
-        "pointerAngle": 270,
+        "pointerAngle": window.innerWidth > window.innerHeight ? 270 : 0,
         "animation": {
             "type": "spinToStop",
             "duration": 10,
@@ -953,11 +953,20 @@ function update(){
     theWheel.ctx.strokeStyle = "black";
     theWheel.ctx.fillStyle = "#000000";
     theWheel.ctx.beginPath();
-    theWheel.ctx.translate(canvas.width / 7.5, canvas.height / 2);
-    theWheel.ctx.moveTo(0, -20);
-    theWheel.ctx.lineTo(32, 0);
-    theWheel.ctx.lineTo(0, 20);
-    theWheel.ctx.lineTo(0, -20);
+    if(window.innerWidth > window.innerHeight){
+        theWheel.ctx.translate(canvas.width / 7.5, canvas.height / 2);
+        theWheel.ctx.moveTo(0, -20);
+        theWheel.ctx.lineTo(32, 0);
+        theWheel.ctx.lineTo(0, 20);
+        theWheel.ctx.lineTo(0, -20);
+    }
+    else{
+        theWheel.ctx.translate(canvas.width / 2, canvas.height / 7.5);
+        theWheel.ctx.moveTo(-20, 0);
+        theWheel.ctx.lineTo(0, 32);
+        theWheel.ctx.lineTo(20, 0);
+        theWheel.ctx.lineTo(-20, 0);
+    }
     theWheel.ctx.stroke();
     theWheel.ctx.fill();
     theWheel.ctx.restore();
