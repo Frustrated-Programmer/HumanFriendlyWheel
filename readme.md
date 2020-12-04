@@ -90,9 +90,14 @@ Once you spun something on the wheel you may not want it to be shown on the whee
    Clicking this icon removes the weight on that item.
 
 ### What does Weighting do?
-Do you want a particular item have a better chance of winning than the others? Well weighting improves chances of that item. To explain how this works, imagine a pizza, this pizza was ordered to have 8 slices. However you found out last minute 2 of the slices combined into a single double slice. Now turn the pizza into a wheel, and you have 6 regular slices and 1 double slice. This is how weighing works, it grabs an extra slice for itself.
+Do you want a particular item have a better chance of winning than the others? Well weighting improves chances of that item. To explain how this works read this:<br>
 
-You can stack weighting as well for example this list:
+ > Imagine a pizza, the pizza was ordered to be cut into 8 slices.<br>
+ > However you found out last minute 2 of the slices have been combined into a single double slice.<br>
+ > So when you look at it, you notice that you have 6 regular slices and 1 double slice.
+
+This is how weighting works, it grabs an extra slice or slices for itself depending on what you want.<br>
+**For example:**
 ```
 AUTO | Item 1
 1 | Item 2
@@ -101,7 +106,7 @@ auto | Item 4
 ```
 Would create this weighted wheel:<br>
 ![Weighted Wheel](./PicsForReadMe/WeightedWheel.png)<br>
-If you notice the there is 8 slices, But `Item 3` took `3` extra slices and is now 4/8 slices while `Item 2` only took `1` extra slice.
+If you can tell, the normal size would've been 8 slices, but if we look at `Item 3`, it took `3` extra slices and is now 4/8 slices while `Item 2` only took `1` extra slice.
 
 ### Importing
 Depending on what you are importing the requirements differ. But they all need to be JSON files.
@@ -118,22 +123,68 @@ All data is saved via localStorage on [index.js:2](Index.js) it should be very e
 
 And if you need to get settings there is the EXPORT WHEEL SETTINGS button at the very bottom of the sidebar 
 
-**Note:** I'm 90% sure the weight img & the trashcan is copyrighted, it was just something I found on my computer. I highly advise using different images if you plan on using this for commercial purposes.
+**Note:** I'm 90% sure the weight image & the trashcan image is copyrighted, it was just something I found on my computer. I highly advise using different images if you plan on using this for commercial purposes.
+
 ---
+
 ## Ideas
 These are just ideas, depending on my time and how well this project goes, I may add them
-<br>(Ranked in likely hood of being added)
- - Have the export button export a html/js file having exactly the barebones needed to recreate the wheel. (JSON export is missing things like sounds & pointer)
- - Design custom weight/trashcan images, so they are copyright free.
- - Add a checkbox to disable/enable pointer.
- - Add a button that hides the sidebar. (SHIFT+S maybe re-shows it)
+<br>If you'd like you can buy me a coffee with a note of what kind of feature you want, and I'll add it: 
+<br><a href="https://www.buymeacoffee.com/Frustrated">![Buy me a coffee](./PicsForReadMe/BuyMeCoffee.png)</a>
+---
  - _**Issue:**_ The wheel doesn't start out with a pointer, but gets it as soon as wheel updates.
  - _**Issue:**_ The _addListButton GUI's_ weight input is higher by 1-2 px
- - Have the pins customizable.
- - Let the user change the winning color, and the losing colors.
- - Have the sounds customizable (maybe have a few choices & allow the user to upload more).
- - Maybe add settings that allow user to change text/background/border color of the objects.
- - Let the user choose location of the pointer.
- - Maybe add customization to the pointer such as img/color/size.
- - Make the webpage look nice for every size.
+ - Export Overhaul
+   - Forced to include JSON
+   - Option to include JS
+     - Option to include HTML
+     - Option to include Sounds
+ - Image Overhaul
+   - Custom Weight Icon (current is copyrighted)
+   - Custom Trashcan Icon (current is copyrighted)
+   - Pointer images
+ - Customize Pointer
+   - Disable / Enable
+   - Location
+   - Image / Type
+   - Upload custom pointer.
+ - Pins Customization
+   - Size
+   - Quantity
+   - Sound On Hit (on/off)
+ - Sounds Customization
+   - Type of sound,
+   - volume of sound,
+   - upload custom sound
+ - Winning Customization
+   - Sound on/off
+   - Type of sound
+   - upload custom sound
+   - customize Winning Segment Color
+   - customize Losing Segment Color
+ - Segment Text Customization
+   - Font Size (auto / min / max / forced)
+   - Alignment (Outer / Center / Inner)
+   - Vertical Disable/Enable 
+ - Display Customization
+   - Background Color
+   - Sidebar hidden disable/enable
+   - Result
+     - Text Color
+     - Background color
+     - Border
+         - Enable/Disable
+         - Size
+         - Color
+         - Type
+   - Button
+     - Text Color
+     - Hover Text Color
+     - Background Color
+     - Hover Background Color
+ - Webpage Responsiveness
+   - Scale Results
+   - Scale Sidebar
+   - Scale Wheel
+   - Scale Popup GUI
 
