@@ -131,6 +131,7 @@ And if you need to get settings there is the EXPORT WHEEL SETTINGS button at the
 These are just ideas, depending on my time and how well this project goes, I may add them
 <br>If you'd like you can buy me a coffee with a note of what kind of feature you want, and I'll add it: 
 <br><a href="https://www.buymeacoffee.com/Frustrated">![Buy me a coffee](./PicsForReadMe/BuyMeCoffee.png)</a>
+
 ---
  - _**Issue:**_ The wheel doesn't start out with a pointer, but gets it as soon as wheel updates.
  - _**Issue:**_ The _addListButton GUI's_ weight input is higher by 1-2 px
