@@ -16,7 +16,7 @@ Open the side bar, and in the very top there is the category LIST. This is all t
     ![Edit List Editor](./PicsForReadMe/EditListEditor.png)<br>
     Every line is a different item on the wheel. **Note:** That at the start of every line must either be AUTO or a number followed by a _space_ then _vertical line_ then _space_. So it should be very similar to this: `AUTO | My New Item` or `2 | My Other Item`. The AUTO or Number is the **weight** of the item. _(Discussed later)_
  - **Add Button**
-    - Under the list of items and the LIST button, there is a button with a `+` as it's label. If you click it, you will be greeted by this GUI:
+    - Under the list of items and the LIST button, there is a button with a `+` as it's label. If you click it, you will be greeted by this GUI:<br>
     ![Add List Button](./PicsForReadMe/AddListButton.png)<br>       
     It should be simple, leave the weight empty for AUTO or input a number. Then fill in what you want the new segment to be labeled.
  - **Importing**
@@ -36,7 +36,7 @@ Open the side bar, and in the middle there is the category SKIP. This is all the
     ![Edit List Editor](./PicsForReadMe/EditSkipEditor.png)<br>
     Every line is a different item on the wheel. **Note:** you need to match the item you want to skip **_case for case_**. So `My Item` will skip `My Item` but won't skip `My item` or `My Item 2`.
  - **Add Button**
-    - Under the list of items to be skipped and the SKIP button, there is a button with a `+` as it's label. If you click it, you will be greeted by this GUI:
+    - Under the list of items to be skipped and the SKIP button, there is a button with a `+` as it's label. If you click it, you will be greeted by this GUI:<br>
     ![Add List Button](./PicsForReadMe/AddSkipButton.png)<br>       
     It should be simple, Just fill in what you want skip. **Note:** you need to match the item you want to skip **_case for case_**. So `My Item` will skip `My Item` but won't skip `My item` or `My Item 2`.
  - **Importing**
@@ -54,7 +54,7 @@ Every item on the wheel is a color controlled by the color table. The very botto
     Every line is a different item on the wheel. **Note:** you must have a valid hexcode on each line. That is a `#` followed by 6 numbers or letters.<br>
     **Note:** You can click on the colored squares to open up a color picker to edit the current line.
  - **Add Button**
-    - Under the list of items to be skipped and the SKIP button, there is a button with a `+` as it's label. If you click it, you will be greeted by this GUI:
+    - Under the list of items to be skipped and the SKIP button, there is a button with a `+` as it's label. If you click it, you will be greeted by this GUI:<br>
     ![Add List Button](./PicsForReadMe/AddColorButton.png)<br>       
     It should be simple, Just fill in what you want skip. **Note:** you must have a valid hexcode. That is a `#` followed by 6 numbers or letters.<br>
     **Note:** You can click on the colored square to open up a color picker.
