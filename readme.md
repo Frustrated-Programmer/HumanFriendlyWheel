@@ -90,7 +90,7 @@ Once you spun something on the wheel you may not want it to be shown on the whee
    Clicking this icon removes the weight on that item.
 
 ### What does Weighting do?
-Do you want a particular item have a better chance of winning than the others? Well weighting improves chances of that item. To explain how this works, imagine the wheel has 8 slices. However you found out last minute 2 of the slices combined into a single double slice. Now turn the pizza into a wheel, and you have 6 regular slices and 1 double slice. This is how weighing works, it grabs an extra slice for itself.
+Do you want a particular item have a better chance of winning than the others? Well weighting improves chances of that item. To explain how this works, imagine a pizza, this pizza was ordered to have 8 slices. However you found out last minute 2 of the slices combined into a single double slice. Now turn the pizza into a wheel, and you have 6 regular slices and 1 double slice. This is how weighing works, it grabs an extra slice for itself.
 
 You can stack weighting as well for example this list:
 ```
