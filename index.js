@@ -104,7 +104,8 @@ let addItemAdd = document.getElementById("add-item-add");
 //export-item
 let exportJson = "{}";
 let exportFile = document.getElementById("export-file");
-let exportBttn = document.getElementById("exportBttn");
+let exportWheelBttn = document.getElementById("exportWheelBttn");
+let exportDataBttn = document.getElementById("exportDataBttn");
 let exportFileClose = document.getElementById("export-file-close");
 let exportFileDownload = document.getElementById("export-file-download");
 let exportFileData = document.getElementById("export-file-data");
@@ -125,15 +126,31 @@ let uploadSteps = {};
 exportFileClose.onclick = function(){
     exportFile.style.display = "none";
 };
-exportBttn.onclick = function(){
+exportWheelBttn.onclick = function(){
     exportJson = JSON.stringify(exportJson, null, "\t");
     exportFileData.value = exportJson;
     exportFile.style.display = "block";
+    exportFileDownload.onclick = function(){
+        exportFileAnchor.setAttribute("href", "data:text/json;charset=utf-8," + encodeURIComponent(exportJson));
+        exportFileAnchor.setAttribute("download", "wheelSettings.json");
+        exportFileAnchor.click();
+    };
 };
-exportFileDownload.onclick = function(){
-    exportFileAnchor.setAttribute("href", "data:text/json;charset=utf-8," + encodeURIComponent(exportJson));
-    exportFileAnchor.setAttribute("download", "wheelSettings.json");
-    exportFileAnchor.click();
+exportDataBttn.onclick = function(){
+    let exporting = {
+        list,
+        weights,
+        toSkip,
+        colors
+    }
+    exporting = JSON.stringify(exporting, null, "\t");
+    exportFileData.value = exporting;
+    exportFile.style.display = "block";
+    exportFileDownload.onclick = function(){
+        exportFileAnchor.setAttribute("href", "data:text/json;charset=utf-8," + encodeURIComponent(exporting));
+        exportFileAnchor.setAttribute("download", "wheelData.json");
+        exportFileAnchor.click();
+    };
 };
 editItemEditor.onscroll = function(e){
     lines.scrollTop = editItemEditor.scrollTop;

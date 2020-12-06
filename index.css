@@ -5,7 +5,7 @@ hr.solid {
 	margin-top: 6%;
 }
 
-button:hover {
+button[enabled]:hover {
 	cursor: pointer;
 }
 
@@ -344,4 +344,8 @@ body, html {
 	display: none;
 	overflow: hidden
 }
-
+#exportDataBttn, #exportWheelBttn{
+	font-size: 74%;
+	margin-bottom: 8%;
+	width: -webkit-fill-available;
+}
