@@ -6,6 +6,7 @@ function saveItem(item, data){
         case "weights":
         case "colors":
         case "skip":
+        case "splitup":
         case "randomize":
             return localStorage.setItem(item, data);
     }
@@ -18,6 +19,7 @@ function loadItem(item){
         case "weights":
         case "colors":
         case "skip":
+        case "splitup":
         case "randomize":
             return localStorage.getItem(item);
     }
@@ -83,6 +85,7 @@ let addColor = document.getElementById("addColor");
 let importColor = document.getElementById("importColor");
 let colorsTable = document.getElementById("colorsTable");
 let randomizedCheckbox = document.getElementById("randomizeCheckbox");
+let splitUpCheckbox = document.getElementById('splitUpCheckbox');
 
 //edit-item
 let editItem = document.getElementById("edit-item");
@@ -188,6 +191,10 @@ useSkipCheckbox.onchange = function(){
 };
 randomizedCheckbox.onchange = function(){
     saveItem("randomized", this.checked);
+    makeWheel(theWheel.rotationAngle % 360);
+};
+splitUpCheckbox.onchange = function(){
+    saveItem('splitup',this.checked);
     makeWheel(theWheel.rotationAngle % 360);
 };
 curve.onclick = function(){
@@ -911,19 +918,39 @@ function makeWheel(rotation){
         let arcSize = weightsUsed[i].toString().toLowerCase() === "auto" ? defaultSize : ((parseInt(weightsUsed[i], 10) + 1) * defaultSize);
         let fontSize = 60;
         let foundSize = false;
-        while(!foundSize){
-            if(!fitsInsideArc({fontSize, margin, angle: arcSize, wheelWidth, text: listUsed[i], ctx})) fontSize--;
-            else foundSize = true;
-            if(fontSize < 1) foundSize = true;
+        if(splitUpCheckbox.checked && weightsUsed[i].toString().toLowerCase() !== "auto"){
+            arcSize = defaultSize;
+            while(!foundSize){
+                if(!fitsInsideArc({fontSize, margin, angle: arcSize, wheelWidth, text: listUsed[i], ctx})) fontSize--;
+                else foundSize = true;
+                if(fontSize < 1) foundSize = true;
+            }
+            for(let j =0;j<parseInt(weightsUsed[i], 10) + 1;j++){
+                segments.push({
+                    "fillStyle": colors[segments.length % colors.length],
+                    "size": arcSize,
+                    "text": listUsed[i],
+                    "textFontSize": fontSize,
+                    "textOrientation": "horizontal",
+                    "textDirection": "reversed"
+                });
+            }
         }
-        segments.push({
-            "fillStyle": colors[segments.length % colors.length],
-            "size": arcSize,
-            "text": listUsed[i],
-            "textFontSize": fontSize,
-            "textOrientation": "horizontal",
-            "textDirection": "reversed"
-        });
+        else{
+            while(!foundSize){
+                if(!fitsInsideArc({fontSize, margin, angle: arcSize, wheelWidth, text: listUsed[i], ctx})) fontSize--;
+                else foundSize = true;
+                if(fontSize < 1) foundSize = true;
+            }
+            segments.push({
+                "fillStyle": colors[segments.length % colors.length],
+                "size": arcSize,
+                "text": listUsed[i],
+                "textFontSize": fontSize,
+                "textOrientation": "horizontal",
+                "textDirection": "reversed"
+            });
+        }
     }
     if(randomizedCheckbox.checked){
         shuffleArray(segments);
@@ -991,6 +1018,7 @@ function update(){
 
 function winAnimation(){
     randomizedCheckbox.disabled = false;
+    splitUpCheckbox.disabled = false;
     editList.disabled = false;
     editSkip.disabled = false;
     editColors.disabled = false;
@@ -1042,6 +1070,7 @@ function startSpin(){
             canvas.classList.add("animateCanvasDown");
         }
         randomizedCheckbox.disabled = true;
+        splitUpCheckbox.disabled = true;
         editList.disabled = true;
         editSkip.disabled = true;
         editColors.disabled = true;
@@ -1077,5 +1106,11 @@ randomizedCheckbox.checked = randomizedCheckboxChecked;
 randomizedCheckbox.value = randomizedCheckboxChecked;
 randomizedCheckbox.defaultValue = randomizedCheckboxChecked;
 randomizedCheckbox.onchange();
+let splitUpCheckboxChecked = loadItem("splitup") === "true";
+splitUpCheckbox.defaultChecked = splitUpCheckboxChecked;
+splitUpCheckbox.checked = splitUpCheckboxChecked;
+splitUpCheckbox.value = splitUpCheckboxChecked;
+splitUpCheckbox.defaultValue = splitUpCheckboxChecked;
+splitUpCheckbox.onchange();
 canvas.onclick = startSpin;
 makeWheel();

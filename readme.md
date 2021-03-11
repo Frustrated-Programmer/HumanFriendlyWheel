@@ -13,15 +13,14 @@ Also many thanks to winWheel.js this 100% wouldn't be possibly without it. Check
  - Easy to use Editors.
  - Ability to import contents.
  - Ability to download your wheel's settings.
- - Saves the content to your browser. (Your data is never seen by my server)
+ - Saves the content to your browser's localStorage. (Your data is never seen by my server)
  - Easy on the Eyes Interface
- 
  ---
  
 # Details on how to use
 Just in case you have a question on ANYTHING on this, everything this wheel has should be covered, if it's not in this list, I probably don't have support for it.
 
-###Accessing the sidebar
+### Accessing the sidebar
 In the main page you should see a hamburger menu in the top left, it looks something like:<br>
 ![Sidebar Button Image](./PicsForReadMe/SidebarButton.png)<br>
 Click it to open the sidebar, then click it again to close it
