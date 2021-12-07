@@ -23,17 +23,18 @@ function loadItem(item){
         case "randomize":
             return localStorage.getItem(item);
     }
-
 }
+
+const seperator = "╪";
 
 //LIST
 let list = loadItem("list");
 if(!list){
     list = ["Item 1", "Item 2", "Item 3", "Item 4"];
-    saveItem("list", list.join(", "));
+    saveItem("list", list.join(seperator));
 }
 else{
-    list = list.split(", ");
+    list = list.split(seperator);
 }
 //WEIGHTS
 let weights = loadItem("weights");
@@ -42,19 +43,19 @@ if(!weights){
     for(let i = 0; i < list.length; i++){
         weights.push("auto");
     }
-    saveItem("weights", weights.join(", "));
+    saveItem("weights", weights.join(seperator));
 }
 else{
-    weights = weights.split(", ");
+    weights = weights.split(seperator);
 }
 //SKIP
 let toSkip = loadItem("toSkip");
 if(!toSkip){
     toSkip = [];
-    saveItem("toSkip", toSkip.join(", "));
+    saveItem("toSkip", toSkip.join(seperator));
 }
 else{
-    toSkip = toSkip.split(", ");
+    toSkip = toSkip.split(seperator);
 }
 //COLORS
 let colors = loadItem("colors");
@@ -63,10 +64,10 @@ if(!colors){
     for(let i = 0; i < list.length; i++){
         colors.push("#" + Math.floor(Math.random() * 16777215).toString(16));
     }
-    saveItem("colors", colors.join(", "));
+    saveItem("colors", colors.join(seperator));
 }
 else{
-    colors = colors.split(", ");
+    colors = colors.split(seperator);
 }
 //SIDEBAR
 let sidebar = document.getElementById("sidebar");
@@ -171,11 +172,11 @@ respinBttn.onclick = function(){
     startSpin();
 };
 selectBttn.onclick = function(){
-    respinBttn.disabled = true;
-    selectBttn.disabled = true;
-    toSkip.push(theWheel.getIndicatedSegment().text);
-    saveItem("toSkip", toSkip.join(", "));
-    updateSkip();
+        respinBttn.disabled = false;
+        selectBttn.disabled = true;
+        toSkip.push(theWheel.getIndicatedSegment().text);
+        saveItem("toSkip", toSkip.join(seperator));
+        updateSkip();
 };
 useSkipCheckbox.onchange = function(){
     saveItem("skip", this.checked);
@@ -271,8 +272,8 @@ importList.onclick = function(){
                     }
                     weights.push(weight);
                 }
-                saveItem("list", list.join(", "));
-                saveItem("weights", weights.join(", "));
+                saveItem("list", list.join(seperator));
+                saveItem("weights", weights.join(seperator));
                 updateList();
                 makeWheel();
                 uploadSteps.done();
@@ -311,7 +312,7 @@ importSkip.onclick = function(){
                     if(!usedSkip[i].length) continue;
                     toSkip.push(usedSkip[i]);
                 }
-                saveItem("toSkip", toSkip.join(", "));
+                saveItem("toSkip", toSkip.join(seperator));
                 updateSkip();
                 makeWheel();
                 uploadSteps.done();
@@ -364,7 +365,7 @@ importColor.onclick = function(){
                         else colors.push(usedColors[i]);
                     }
                 }
-                saveItem("colors", colors.join(", "));
+                saveItem("colors", colors.join(seperator));
                 updateColors();
                 makeWheel();
                 uploadSteps.done();
@@ -411,8 +412,8 @@ function addListBttn(){
         if(addItemValue.value.length){
             weights.push(parseInt(addItemWeight.value, 10) > 0 ? parseInt(addItemWeight.value, 10) : "auto");
             list.push(addItemValue.value);
-            saveItem("weights", weights.join(", "));
-            saveItem("list", list.join(", "));
+            saveItem("weights", weights.join(seperator));
+            saveItem("list", list.join(seperator));
             addItem.style.display = "none";
             updateList();
             makeWheel();
@@ -431,7 +432,7 @@ function addSkipBttn(){
     addItemAdd.onclick = function(){
         if(addItemValue.value.length){
             toSkip.push(addItemValue.value);
-            saveItem("toSkip", toSkip.join(", "));
+            saveItem("toSkip", toSkip.join(seperator));
             addItem.style.display = "none";
             updateSkip();
             makeWheel();
@@ -472,7 +473,7 @@ function addColorBttn(){
             }
             else{
                 colors.push(addItemValue.value);
-                saveItem("colors", colors.join(", "));
+                saveItem("colors", colors.join(seperator));
                 addItem.style.display = "none";
                 updateColors();
                 makeWheel();
@@ -630,8 +631,8 @@ function editListFunc(){
             editItem.style.display = "none";
             weights = newWeights;
             list = newList;
-            saveItem("weights", weights.join(", "));
-            saveItem("list", list.join(", "));
+            saveItem("weights", weights.join(seperator));
+            saveItem("list", list.join(seperator));
             updateList();
             makeWheel(theWheel.rotationAngle);
         }
@@ -651,7 +652,7 @@ function editSkipFunc(){
     editItemSave.onclick = function(){
         editItem.style.display = "none";
         toSkip = editItemEditor.value.split("\n");
-        saveItem("toSkip", toSkip.join(", "));
+        saveItem("toSkip", toSkip.join(seperator));
         updateSkip();
         makeWheel(theWheel.rotationAngle);
     };
@@ -689,7 +690,7 @@ function editColorsFunc(){
         if(errorMsg.length === 0){
             editItem.style.display = "none";
             colors = split;
-            saveItem("colors", colors.join(", "));
+            saveItem("colors", colors.join(seperator));
             updateColors();
             makeWheel(theWheel.rotationAngle);
         }
@@ -729,8 +730,8 @@ function updateList(){
         deleteBttn.onclick = function(){
             list.splice(i, 1);
             weights.splice(i, 1);
-            saveItem("list", list.join(", "));
-            saveItem("weights", weights.join(", "));
+            saveItem("list", list.join(seperator));
+            saveItem("weights", weights.join(seperator));
             updateList();
             makeWheel(theWheel.rotationAngle);
         };
@@ -751,7 +752,7 @@ function updateList(){
             weightedBttn.appendChild(weightImg);
             weightedBttn.onclick = function(){
                 weights[i] = "auto";
-                saveItem("weights", weights.join(", "));
+                saveItem("weights", weights.join(seperator));
                 weightedBttn.remove();
                 makeWheel(theWheel.rotationAngle);
             };
@@ -781,7 +782,7 @@ function updateSkip(){
         deleteBttn.className = "deleteItem";
         deleteBttn.onclick = function(){
             toSkip.splice(i, 1);
-            saveItem("toSkip", toSkip.join(", "));
+            saveItem("toSkip", toSkip.join(seperator));
             updateSkip();
             makeWheel(theWheel.rotationAngle);
         };
@@ -817,7 +818,7 @@ function updateColors(){
         deleteBttn.onclick = function(){
             colors.splice(i, 1);
             updateColors();
-            saveItem("colors", colors.join(", "));
+            saveItem("colors", colors.join(seperator));
             makeWheel(theWheel.rotationAngle);
         };
         let trashCanImg = document.createElement("img");
